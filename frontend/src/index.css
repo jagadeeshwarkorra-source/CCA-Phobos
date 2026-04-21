@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #E8EDF7;
+    color: #111827;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  /* ── MARS-themed section header bar ── */
+  .mars-section-header {
+    background-color: #003087;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  /* ── MARS table header cells ── */
+  .mars-th {
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background-color: #003087;
+    white-space: nowrap;
+  }
+  .mars-th-right {
+    padding: 0.5rem 0.75rem;
+    text-align: right;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background-color: #003087;
+    white-space: nowrap;
+  }
+
+  /* ── Column group header (thin row spanning multiple columns) ── */
+  .mars-th-group {
+    padding: 0.2rem 0.5rem;
+    text-align: center;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background-color: #003087;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  /* ── Primary MARS button ── */
+  .mars-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #003087;
+    color: #fff;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.15s, box-shadow 0.15s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+  .mars-btn-primary:hover { background-color: #002070; box-shadow: 0 2px 6px rgba(0,0,0,0.18); }
+
+  /* ── Secondary MARS button ── */
+  .mars-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: #4472C4;
+    color: #fff;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: background-color 0.15s;
+  }
+  .mars-btn-secondary:hover { background-color: #3560B0; }
+
+  /* ── Alternating table rows ── */
+  .mars-tr-even { background-color: #fff; }
+  .mars-tr-odd  { background-color: #E8EDF7; }
+
+  /* ── Info / notice strips ── */
+  .mars-info-strip-blue  { background-color: #EFF6FF; border-bottom: 1px solid #BFDBFE; color: #1E40AF; font-size: 0.75rem; font-weight: 500; padding: 0.625rem 1rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+  .mars-info-strip-amber { background-color: #FFFBEB; border-bottom: 1px solid #FDE68A; color: #92400E; font-size: 0.75rem; font-weight: 500; padding: 0.625rem 1rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+  .mars-info-strip-green { background-color: #F0FDF4; border-bottom: 1px solid #BBF7D0; color: #14532D; font-size: 0.75rem; font-weight: 500; padding: 0.625rem 1rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f0f2f8; }
+::-webkit-scrollbar-thumb { background: #4472C4; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #003087; }
