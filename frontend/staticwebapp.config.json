@@ -6,6 +6,18 @@
       "*.{css,js,png,jpg,jpeg,gif,ico,svg,woff,woff2,ttf,eot}"
     ]
   },
+  "mimeTypes": {
+    ".js": "application/javascript",
+    ".mjs": "application/javascript",
+    ".jsx": "application/javascript",
+    ".ts": "application/javascript",
+    ".tsx": "application/javascript",
+    ".css": "text/css",
+    ".json": "application/json",
+    ".svg": "image/svg+xml",
+    ".woff": "font/woff",
+    ".woff2": "font/woff2"
+  },
   "globalHeaders": {
     "Cache-Control": "no-cache"
   }
