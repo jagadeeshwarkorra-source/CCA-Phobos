@@ -20,9 +20,11 @@ if not os.path.exists("src/data/scenarios.json"):
 
 # Start gunicorn (replaces current process)
 print(">>> Starting gunicorn...")
+import shutil
+gunicorn_path = shutil.which("gunicorn") or "antenv/bin/gunicorn"
 os.execvp(
-    "gunicorn",
-    ["gunicorn", "-k", "uvicorn.workers.UvicornWorker",
+    gunicorn_path,
+    [gunicorn_path, "-k", "uvicorn.workers.UvicornWorker",
      "-w", "2", "--bind", "0.0.0.0:8000",
      "--timeout", "120",
      "main:app"]

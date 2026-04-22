@@ -1,1 +1,1 @@
-web: python startup.py
+web: antenv/bin/python startup.py
