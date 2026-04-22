@@ -21,15 +21,20 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install dependencies into backend folder
         working-directory: backend
         run: |
-          pip install -r requirements.txt
+          pip install -r requirements.txt --target=".python_packages/lib/site-packages"
+
+      - name: Zip backend package
+        run: |
+          cd backend
+          zip -r ../backend-deploy.zip . -x "*.pyc" -x "__pycache__/*"
 
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ secrets.AZURE_WEBAPP_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: backend
+          package: backend-deploy.zip
           startup-command: 'uvicorn main:app --host 0.0.0.0 --port 8000'
