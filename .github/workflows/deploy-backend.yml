@@ -21,15 +21,10 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies into backend folder
-        working-directory: backend
-        run: |
-          pip install -r requirements.txt --target=".python_packages/lib/site-packages"
-
       - name: Zip backend package
         run: |
           cd backend
-          zip -r ../backend-deploy.zip . -x "*.pyc" -x "__pycache__/*"
+          zip -r ../backend-deploy.zip . -x "*.pyc" -x "__pycache__/*" -x ".python_packages/*"
 
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v3
