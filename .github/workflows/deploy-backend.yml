@@ -16,22 +16,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Create venv and install dependencies
-        working-directory: backend
-        run: |
-          python3 -m venv antenv
-          antenv/bin/pip install --upgrade pip
-          antenv/bin/pip install -r requirements.txt
-
-      - name: Zip backend package (includes venv)
+      - name: Zip backend package (code only — Oryx installs deps on Azure)
         run: |
           cd backend
-          zip -r ../backend-deploy.zip . -x "*.pyc" -x "__pycache__/*"
+          zip -r ../backend-deploy.zip . \
+            -x "*.pyc" \
+            -x "__pycache__/*" \
+            -x "antenv/*" \
+            -x ".python_packages/*"
 
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v3
