@@ -3,3 +3,4 @@ uvicorn==0.27.1
 pandas==2.2.1
 pydantic==2.6.3
 langgraph==0.0.27
+gunicorn
