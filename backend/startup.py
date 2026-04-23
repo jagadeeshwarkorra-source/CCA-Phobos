@@ -8,10 +8,12 @@ import csv
 import sqlite3
 import shutil
 
-BASE = os.path.dirname(os.path.abspath(__file__))
-DB_PATH  = os.path.join(BASE, "src", "data", "drp.db")
+BASE         = os.path.dirname(os.path.abspath(__file__))
+PERSIST_DIR  = os.environ.get("PERSISTENT_DATA_DIR", os.path.join(BASE, "src", "data"))
+os.makedirs(PERSIST_DIR, exist_ok=True)
+DB_PATH  = os.path.join(PERSIST_DIR, "drp.db")
 CSV_PATH = os.path.join(BASE, "src", "data", "mock_data.csv")
-SC_PATH  = os.path.join(BASE, "src", "data", "scenarios.json")
+SC_PATH  = os.path.join(PERSIST_DIR, "scenarios.json")
 
 # ── Seed DB from CSV if missing ───────────────────────────────────────────────
 if not os.path.exists(DB_PATH):

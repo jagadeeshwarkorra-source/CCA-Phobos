@@ -9,9 +9,13 @@ import os
 
 # ── File paths ───────────────────────────────────────────────────────────────
 DATA_DIR       = os.path.join(os.path.dirname(__file__), "data")    # backend/src/data/
-MOCK_DATA_PATH = os.path.join(DATA_DIR, "mock_data.csv")             # kept for reference / migration
-DB_PATH        = os.path.join(DATA_DIR, "drp.db")
-SCENARIOS_PATH = os.path.join(DATA_DIR, "scenarios.json")
+MOCK_DATA_PATH = os.path.join(DATA_DIR, "mock_data.csv")             # source CSV (always deployed)
+
+# Persistent data dir: /home/data/ on Azure (survives deployments), local src/data/ in dev
+_PERSISTENT_DIR = os.environ.get("PERSISTENT_DATA_DIR", DATA_DIR)
+os.makedirs(_PERSISTENT_DIR, exist_ok=True)
+DB_PATH        = os.path.join(_PERSISTENT_DIR, "drp.db")
+SCENARIOS_PATH = os.path.join(_PERSISTENT_DIR, "scenarios.json")
 
 # ── Data horizons (period_val relative to current period P+0) ────────────────
 OVERVIEW_MIN_PERIOD = -20   # Buffer restore — expands range for YoY lookups
